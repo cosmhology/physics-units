@@ -1,0 +1,364 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <title>calculator: Units of Measure</title>
+<BASE TARGET="_top">
+<link rel=stylesheet type="text/css" HREF="../admin/styles/normal.css">
+<script LANGUAGE="JavaScript">
+
+<!--
+var f0=7;
+function chk(x) {
+y=parseFloat(x);
+if (isNaN(y)) return 0;
+else return y;
+}
+function format(x, n) {
+if (x==0) return 0;
+if (x>1e99 || x<-1e99) return "Infinity";
+else {
+  if (n<3) n=3;
+  if (x<0) {x=-x; sign="-";} else sign="";
+  ord = Math.floor(Math.log(x)/Math.log(10));
+  k = n-ord-1;
+  m = Math.pow(10, k);
+  x = Math.round(x*m);
+  s="" + x;
+  if (ord<n && ord>-n+3) {
+    if (k<0) {for (var i=0; i>k; i--) s=s+"0";}
+    else if (k>0) {
+      if (k<=n) {s=s.substring(0, n-k) + "." + s.substring(n-k, n);}
+      else {for (var i=0; i<k-n; i++) s="0"+s; s="0."+s;}
+      while (s.charAt(s.length-1)=="0") s=s.substring(0, s.length-1);
+      if (s.charAt(s.length-1)==".") s=s.substring(0,s.length-1);
+      }
+    }
+  else { //expo
+    if (ord>0) {signE="+";} else signE="-";
+    s=s.substring(0, 1) + "." + s.substring(1, n-2) + "e" + signE + Math.abs(ord);
+    }
+  return sign+s;
+  }
+}
+function convert() { //args: 1st=input, 2nd..last=coefficients
+var first=2; // the 3rd form field is the 1st data field
+var x, pos, fields, first;
+fields=convert.arguments.length-1;
+inp=convert.arguments[0];
+x=chk(inp.value);
+for (var i=first; i<=inp.form.elements.length-1; i++) {if (inp.name == inp.form.elements[i].name) {pos=i-first+1; break;}}
+for (var i=1; i<=fields; i++) {
+  if(i==pos) continue;
+  inp.form.elements[first+i-1].value=format(x*convert.arguments[i]/convert.arguments[pos], f0);
+  }
+return;
+}
+// -->
+
+</script>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#008080">
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#FFFFCC"><tr BGCOLOR="#FFCC00">
+<td><h2>Units of Measure</h2></td>
+</tr><tr>
+<td><DIV class="as">Enter a number in any field and click the "Calculate" button (or anywhere outside the field) to calculate the conversions. Click the "Reset" button to start over.</DIV></td>
+</tr></table>
+
+<script LANGUAGE="JavaScript">
+
+<!-- length
+function x_length(inp) {convert(inp, 12, 1, 0.3048);}
+// -->
+
+</script>
+<A NAME="1"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC"><tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Length</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="inch" value="0" size="6" onChange="x_length(this);">in
+= <input type="text" name="ft" value="0" size="6" onChange="x_length(this);">ft =&nbsp;<input type="text" name="m" value="0" size="6" onChange="x_length(this);">m</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- area
+function x_area(inp) {convert(inp, 144, 1, 0.3048*0.3048);}
+// -->
+
+</script>
+<A NAME="2"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC">
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Area</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="inch2" value="0" size="6" onChange="x_area(this);">in<SUP>2</SUP>
+= <input type="text" name="ft2" value="0" size="6" onChange="x_area(this);">ft<SUP>2</SUP>
+= <input type="text" name="m2" value="0" size="6" onChange="x_area(this);">m<SUP>2</SUP></DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- volume
+function x_volume(inp) {convert(inp, 1728, 1, 3.048*3.048*3.048);}
+// -->
+
+</script>
+<A NAME="3"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC"><tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Volume</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="inch3" value="0" size="6" onChange="x_volume(this);">in<SUP>3</SUP>
+= <input type="text" name="ft3" value="0" size="6" onChange="x_volume(this);">ft<SUP>3</SUP>
+= <input type="text" name="dm3" value="0" size="6" onChange="x_volume(this);">dm<SUP>3</SUP>(l)</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- mass
+function x_mass(inp) {convert(inp, 1, 0.4535923);}
+// -->
+
+</script>
+<A NAME="4"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC" >
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Mass</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="lb" value="0" size="6" onChange="x_mass(this);">lb
+= <input type="text" name="kg" value="0" size="6" onChange="x_mass(this);">kg</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- density
+function x_density(inp) {convert(inp, 1, 16.01846);}
+// -->
+
+</script>
+<A NAME="5"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC" >
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Density</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="lbft3" value="0" size="6" onChange="x_density(this);">lb/ft<SUP>3</SUP>
+= <input type="text" name="kgm3" value="0" size="6" onChange="x_density(this);">kg/m<SUP>3</SUP></DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- force
+function x_force(inp) {convert(inp, 1/0.4535923, 1, 9.80665);}
+// -->
+
+</script>
+<A NAME="6"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC" >
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Force</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="lbf" value="0" size="6" onChange="x_force(this);">lbf
+= <input type="text" name="kgf" value="0" size="6" onChange="x_force(this);">kG
+= <input type="text" name="n" value="0" size="6" onChange="x_force(this);">N</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- torque
+function x_torque(inp) {convert(inp, 1/0.4535923/0.3048, 1, 9.80665);}
+// -->
+
+</script>
+<A NAME="7"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC" >
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Torque</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="lbft" value="0" size="6" onChange="x_torque(this);">lbf&middot;ft
+= <input type="text" name="kgm" value="0" size="6" onChange="x_torque(this);">kG&middot;m
+= <input type="text" name="nm" value="0" size="6" onChange="x_torque(this);">N&middot;m</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- pressure
+function x_pressure(inp) {convert(inp, 406.79375, 29.92126, 760, 14.695, 1, 1.033227, 101.325);}
+// -->
+
+</script>
+<A NAME="8"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC">
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Pressure</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="inh2o" value="0" size="6" onChange="x_pressure(this);">in H<SUB>2</SUB>O
+= <input type="text" name="inhg" value="0" size="6" onChange="x_pressure(this);">in Hg
+= <input type="text" name="mmhg" value="0" size="6" onChange="x_pressure(this);">mm Hg
+= <input type="text" name="psi" value="0" size="6" onChange="x_pressure(this);">lbf/in<SUP>2</SUP> (psi)
+= <input type="text" name="atm" value="0" size="6" onChange="x_pressure(this);">atm
+= <input type="text" name="at" value="0" size="6" onChange="x_pressure(this);">kG/cm<SUP>2</SUP> (at)
+= <input type="text" name="kpa" value="0" size="6" onChange="x_pressure(this);">kPa</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- energy
+function x_energy(inp) {convert(inp, 1, 3.9683, 0.00155960842, 0.001163, 4.1868);}
+// -->
+
+</script>
+<A NAME="9"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC">
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Energy</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="kcal" value="0" size="6" onChange="x_energy(this);">kcal
+= <input type="text" name="btu" value="0" size="6" onChange="x_energy(this);">Btu
+= <input type="text" name="hph" value="0" size="6" onChange="x_energy(this);">hp&middot;h
+= <input type="text" name="kwh" value="0" size="6" onChange="x_energy(this);">kWh
+= <input type="text" name="kj" value="0" size="6" onChange="x_energy(this);">kJ</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- power
+function x_power(inp) {convert(inp, 1, 1.01387, 0.7457);}
+// -->
+
+</script>
+<A NAME="10"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC">
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Power</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="hp" value="0" size="6" onChange="x_power(this);">hp
+= <input type="text" name="mhp" value="0" size="6" onChange="x_power(this);">metric hp
+= <input type="text" name="kw" value="0" size="6" onChange="x_power(this);">kW</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- velocity
+function x_velocity(inp) {convert(inp, 1, 0.011363664, 0.3048, 0.018288, 0.00508);}
+// -->
+
+</script>
+<A NAME="11"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC">
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Velocity</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="ftmin" value="0" size="6" onChange="x_velocity(this);">ft/min
+= <input type="text" name="mih" value="0" size="6" onChange="x_velocity(this);">mi/h
+= <input type="text" name="mmin" value="0" size="6" onChange="x_velocity(this);">m/min
+= <input type="text" name="km/h" value="0" size="6" onChange="x_velocity(this);">km/h
+= <input type="text" name="m/s" value="0" size="6" onChange="x_velocity(this);">m/s</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- flow rate
+function x_flowRate(inp) {convert(inp, 2118.88, 3600, 60, 1);}
+// -->
+
+</script>
+<A NAME="12"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC">
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Flow Rate</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="ft3min" value="0" size="6" onChange="x_flowRate(this);">ft<SUP>3</SUP>/min (cfm)
+= <input type="text" name="m3h" value="0" size="6" onChange="x_flowRate(this);">m<SUP>3</SUP>/h
+= <input type="text" name="m3m" value="0" size="6" onChange="x_flowRate(this);">m<SUP>3</SUP>/min
+= <input type="text" name="m3s" value="0" size="6" onChange="x_flowRate(this);">m<SUP>3</SUP>/s</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- temperature
+function x_temp(inp) {
+x=chk(inp.value);
+with (inp.form) {
+  if (inp.name=="C") {F.value=format((9 * x/5 + 32), f0);}
+  else {C.value=format((5/9 * (x - 32 )), f0);}
+  }
+}
+// -->
+
+</script>
+<A NAME="13"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC" >
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Temperature</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="F" value="32" size="6" onChange="x_temp(this);">&deg;F
+= <input type="text" name="C" value="0" size="6" onChange="x_temp(this);">&deg;C</DIV></b></td>
+</tr></table>
+</FORM>
+
+<script LANGUAGE="JavaScript">
+
+<!-- fuel consumption
+function x_fuelCon(inp) {
+x=chk(inp.value);
+with (inp.form) {
+  if (inp.name=="mpg") {l100.value=format(235.21/x, f0);}
+  else {mpg.value=format(235.21/x, f0);}
+  }
+}
+// -->
+
+</script>
+<A NAME="14"></a><FORM>
+<table border=0 CELLSPACING=0 CELLPADDING=2 width="100%" BGCOLOR="#CCCCCC" >
+<tr BGCOLOR="#FFCC00">
+<td><DIV class="am"><b>&nbsp;Fuel Consumption</DIV></b></td>
+<td WIDTH="66%"><SPAN class="axs">&nbsp;<input type="button" value="Calculate"><input type="reset" name="reset" value="Reset">&nbsp;</SPAN></td>
+</tr><tr>
+<td COLSPAN="2"><DIV class="am">
+<input type="text" name="mpg" value="Infinity" size="6" onChange="x_fuelCon(this);">mi/gal (US)
+= <input type="text" name="l100" value="0" size="6" onChange="x_fuelCon(this);">l/100 km</DIV></b></td>
+</tr></table>
+</FORM>
+<DIV class="txs">This calculator requires a JavaScript enabled web browser to work correctly.<HR NOSHADE width="100%">[ <a href="../index.html">DieselNet Home</a> ] > [ <a href="../technical.html">Technical</a> ] > [ <a href="index.html">Calculators</a> ]<BR>&nbsp;</DIV>
+</BODY>
+</html>
+
